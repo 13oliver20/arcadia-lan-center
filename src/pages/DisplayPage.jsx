@@ -11,7 +11,7 @@ import qrWhatsappDefault from '../assets/qr_whatsapp.jpg';
 import qrWifiDefault from '../assets/qr_wifi.jpg';
 
 export default function DisplayPage() {
-    const [dailyGiveaways] = useFirebaseSync('arcadia_daily_giveaways', { slots: [] });
+    const [dailyGiveaways, , , giveawaysError] = useFirebaseSync('arcadia_daily_giveaways', { slots: [] });
     const [announcements] = useFirebaseSync('arcadia_announcements_list', []);
 
 
@@ -433,6 +433,10 @@ export default function DisplayPage() {
             )}
 
 
+            {/* Connection Status Indicator */}
+            <div className="absolute bottom-4 right-4 z-[9999] pointer-events-none opacity-20 hover:opacity-100 transition-opacity">
+                <div className={`w-2 h-2 rounded-full ${giveawaysError ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]' : 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]'}`} />
+            </div>
         </div>
     );
 }
