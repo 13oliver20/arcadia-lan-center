@@ -19,6 +19,7 @@ export function useFirebaseSync(key, defaultValue) {
         }
     });
 
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
