@@ -2376,6 +2376,16 @@ export default function AdminPage() {
                         <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-green-400">
                             <QrCode size={20} /> Gestor de QRs
                         </h2>
+                        {/* Toggle Switch - Copied from Display Manager for consistency */}
+                        <div
+                            onClick={() => setQrPanelVisible(!qrPanelVisible)}
+                            className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 shadow-inner ${qrPanelVisible ? 'bg-green-500' : 'bg-slate-700'}`}
+                        >
+                            <div className={`absolute top-1 left-1 bg-white w-5 h-5 rounded-full shadow-md transform transition-transform duration-300 ${qrPanelVisible ? 'translate-x-7' : 'translate-x-0'}`} />
+                            <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-white pointer-events-none uppercase tracking-wider select-none">
+                                {qrPanelVisible ? 'ON' : 'OFF'}
+                            </span>
+                        </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* WiFi Section */}
