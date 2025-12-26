@@ -1473,11 +1473,16 @@ export default function AdminPage() {
 
                 <div className="flex gap-4">
                     {/* Connection Status Indicator */}
-                    <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-2 rounded-lg border border-slate-700">
+                    <div
+                        className={`flex items-center gap-2 bg-slate-800/50 px-3 py-2 rounded-lg border transition-colors ${usersError ? 'border-red-500/50 hover:bg-red-500/10' : 'border-slate-700'}`}
+                        title={usersError ? `Error: ${usersError.message || usersError}` : 'Conexión con Firebase estable'}
+                        onClick={() => usersError && alert(`Error de Firebase:\n${usersError.message || JSON.stringify(usersError)}`)}
+                    >
                         <div className={`w-2 h-2 rounded-full ${usersError ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]' : 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]'}`} />
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                            {usersError ? 'Firebase Offline' : 'Firebase Online'}
+                        <span className={`text-[10px] font-bold uppercase tracking-wider ${usersError ? 'text-red-400' : 'text-slate-400'}`}>
+                            {usersError ? 'Error de Sincronización' : 'Firebase Online'}
                         </span>
+                        {usersError && <AlertCircle size={12} className="text-red-400 animate-pulse" />}
                     </div>
                     <a href="/tarifario" target="_blank" className="text-sm bg-slate-800 px-4 py-2 rounded hover:bg-slate-700 transition flex items-center gap-2">
                         <Monitor size={16} /> Ver Pantalla Tarifario ↗
