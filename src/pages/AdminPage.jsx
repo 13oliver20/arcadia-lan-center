@@ -13,7 +13,7 @@ export default function AdminPage() {
     const navigate = useNavigate();
 
     // --- State Management ---
-    const [users, setUsers] = useFirebaseSync('arcadia_users', []);
+    const [users, setUsers, , usersError] = useFirebaseSync('arcadia_users', []);
 
     // --- Daily Giveaways State (New) ---
     const [dailyGiveaways, setDailyGiveaways] = useFirebaseSync('arcadia_daily_giveaways', {
@@ -1472,6 +1472,13 @@ export default function AdminPage() {
                 </h1>
 
                 <div className="flex gap-4">
+                    {/* Connection Status Indicator */}
+                    <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-2 rounded-lg border border-slate-700">
+                        <div className={`w-2 h-2 rounded-full ${usersError ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]' : 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]'}`} />
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                            {usersError ? 'Firebase Offline' : 'Firebase Online'}
+                        </span>
+                    </div>
                     <a href="/tarifario" target="_blank" className="text-sm bg-slate-800 px-4 py-2 rounded hover:bg-slate-700 transition flex items-center gap-2">
                         <Monitor size={16} /> Ver Pantalla Tarifario ↗
                     </a>

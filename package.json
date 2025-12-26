@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://13oliver20.github.io/pageaadmin",
+  "homepage": "https://13oliver20.github.io/arcadia-lan-center",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",

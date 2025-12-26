@@ -6,7 +6,7 @@ export default defineConfig({
     plugins: [
         react(),
     ],
-    base: "/pageaadmin/",
+    base: "/arcadia-lan-center/",
     build: {
         target: 'chrome79',
         cssTarget: 'chrome79',
